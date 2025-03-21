@@ -7,7 +7,7 @@ const mongooseSchema = require("./model/Schema");
 const app = express();
 require("dotenv").config();
 app.use(cors({
-    origin: 'https://automatic-goldfish-wr7gwgxxj7qvcg66x-3000.app.github.dev'
+    origin: '*'  // Or use '*' for any origin during dev.
   }));
   
 app.use(express.json());
@@ -25,7 +25,7 @@ app.get("/", (req, res) => {
 app.post("/register", (req, res) => {
     const {name, email, password} = req.body;
 
-    mongooseSchema.find({email:email})
+    mongooseSchema.findOne({email:email})
     .then(user => {
         if(user){
             res.json("Already have a account")
@@ -37,7 +37,7 @@ app.post("/register", (req, res) => {
     })
 })
 
-const PORT = process.env.PORT || 5000;
+const PORT = process.env.PORT || 5002;
 
 app.listen(PORT, () => {
     console.log("server is running at port " + PORT)

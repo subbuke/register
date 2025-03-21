@@ -1,6 +1,6 @@
+import { useState } from 'react'
+import './App.css'
 
-import { useState } from "react";
-import "./Auth.css";
 import axios from 'axios';
 
 
@@ -12,12 +12,12 @@ export default function Register({ toggle }) {
   
   const handleSubmit = (e) => {
     e.preventDefault();
-    axios.post('https://automatic-goldfish-wr7gwgxxj7qvcg66x-5000.app.github.dev/register',{name, email, password})
+    axios.post('https://automatic-goldfish-wr7gwgxxj7qvcg66x-5002.app.github.dev/register', {name, email, password})
     .then(result => console.log(result))
     .catch(err => console.log(err))
   };
-
-  return (
+ 
+  return (    
     <div className="auth-box">
       <h2>Register</h2>
       <form onSubmit={handleSubmit}>
